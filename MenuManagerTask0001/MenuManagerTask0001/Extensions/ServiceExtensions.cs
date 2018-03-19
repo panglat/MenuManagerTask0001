@@ -1,6 +1,9 @@
 ﻿using Contracts;
+using Domain.Context;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -35,6 +38,12 @@ namespace MenuManagerTask0001.Extensions
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
             services.AddSingleton<ILoggerManager, LoggerManager>();
+        }
+
+        public static void ConfigureDbContext(this IServiceCollection services, IConfiguration config)
+        {
+            services.AddDbContext<RepositoryContext>(options =>
+                options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
         }
     }
 }

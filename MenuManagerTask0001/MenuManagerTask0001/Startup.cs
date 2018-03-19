@@ -31,6 +31,7 @@ namespace MenuManagerTask0001
             services.ConfigureCors();
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
+            services.ConfigureDbContext(Configuration);
             services.AddMvc();
         }
 
