@@ -15,5 +15,9 @@ namespace Domain.Models
         [Key, ForeignKey("TermId")]
         public int TermId { get; set; }
         public virtual Term Term { get; set; }
+
+        [Required(ErrorMessage = "Value is required")]
+        [StringLength(50, ErrorMessage = "Value can't be longer than 50 characters")]
+        public string Value { get; set; }
     }
 }

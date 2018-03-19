@@ -44,6 +44,22 @@ namespace Domain.DbInitializer
             }
 
             context.SaveChanges();
+
+            var termLocates = new TermLocate[]
+            {
+                new TermLocate{ Locate = locates[0], Term = terms[0], Value = "welcome" },
+                new TermLocate{ Locate = locates[0], Term = terms[1], Value = "name" },
+                new TermLocate{ Locate = locates[0], Term = terms[2], Value = "surname" },
+                new TermLocate{ Locate = locates[1], Term = terms[0], Value = "bem vinda" },
+                new TermLocate{ Locate = locates[1], Term = terms[1], Value = "nome" },
+                new TermLocate{ Locate = locates[1], Term = terms[2], Value = "apelido" },
+            };
+
+            foreach (TermLocate termLocate in termLocates)
+            {
+                context.TermLocates.Add(termLocate);
+            }
+            context.SaveChanges();
         }
     }
 }
