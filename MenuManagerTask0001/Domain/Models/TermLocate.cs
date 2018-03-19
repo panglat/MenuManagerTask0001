@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -7,12 +8,12 @@ namespace Domain.Models
 {
     public class TermLocate
     {
-        public int? LocateId { get; set; }
-        [ForeignKey("LocateId")]
+        [Key, ForeignKey("LocateId")]
+        public int LocateId { get; set; }
         public virtual Locate Locate { get; set; }
 
-        public int? TermId { get; set; }
-        [ForeignKey("TermId")]
+        [Key, ForeignKey("TermId")]
+        public int TermId { get; set; }
         public virtual Term Term { get; set; }
     }
 }
