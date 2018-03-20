@@ -1,5 +1,4 @@
-﻿using Contracts.Domain;
-using Domain.Abstract;
+﻿using Domain.Abstract;
 using Domain.Context;
 using Domain.Models;
 using Repository;

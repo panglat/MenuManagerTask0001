@@ -1,5 +1,5 @@
-﻿using Contracts.Domain;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Repository.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,5 @@
-﻿using Contracts.Domain;
-using Domain.Models;
+﻿using Domain.Models;
+using Repository.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
