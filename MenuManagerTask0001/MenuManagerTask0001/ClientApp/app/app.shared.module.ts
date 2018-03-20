@@ -10,9 +10,12 @@ import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { ConfigService } from './services/config.service';
+import { LanguageService } from './services/';
+import { LanguageHolderService } from './services/holders/language.holder.service';
 
 export function ConfigLoader(configService: ConfigService) {
     // Note: this factory need to return a function (that return a promise)
+    console.log("ConfigLoader");
     return () => configService.loadLanguageTerms();
 }
 
@@ -42,7 +45,10 @@ export function ConfigLoader(configService: ConfigService) {
             useFactory: ConfigLoader,
             deps: [ConfigService],
             multi: true
-        }],
+        },
+        LanguageService,
+        LanguageHolderService
+    ]
 })
 export class AppModuleShared {
 }
