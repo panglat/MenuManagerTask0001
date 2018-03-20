@@ -54,8 +54,12 @@ namespace MenuManagerTask0001.Controllers
                 }
 
                 userDto = _userManager.AddUser(userDto);
+                if(userDto != null)
+                {
+                    return Ok(userDto);
+                }
 
-                return Ok(userDto);
+                return StatusCode(500, "Internal server error");
             }
             catch (Exception)
             {
