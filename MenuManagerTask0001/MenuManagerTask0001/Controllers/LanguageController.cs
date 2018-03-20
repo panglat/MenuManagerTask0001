@@ -24,9 +24,18 @@ namespace MenuManagerTask0001.Controllers
         
         // GET: api/Languages
         [HttpGet]
-        public IEnumerable<Language> GetLanguage()
+        public IActionResult GetLanguage()
         {
-            return _languageManager.GetAllLanguages();
+            try
+            {
+                var languages = _languageManager.GetAllLanguages();
+
+                return Ok(languages);
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
         /*
         // GET: api/Languages/5
