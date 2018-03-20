@@ -54,11 +54,13 @@ namespace MenuManagerTask0001.Extensions
         {
             services.AddScoped<ILanguageRepository, LanguageRepository>();
             services.AddScoped<ITermLanguageRepository, TermLanguageRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
 
         public static void ConfigureManagers(this IServiceCollection services)
         {
             services.AddScoped<ILanguageManager, LanguageManager>();
+            services.AddScoped<IUserManager, UserManager>();
         }
     }
 }

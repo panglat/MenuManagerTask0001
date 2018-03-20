@@ -51,5 +51,22 @@ namespace BL.Helper
             }
             return null;
         }
+
+        public static User UserDtoUser(UserDto userDto)
+        {
+            return new User()
+            {
+                Email = userDto.Email,
+                Password = userDto.Password
+            };
+        }
+
+        public static UserDto UserToUserDto(User user)
+        {
+            return new UserDto()
+            {
+                Email = user.Email
+            };
+        }
     }
 }
