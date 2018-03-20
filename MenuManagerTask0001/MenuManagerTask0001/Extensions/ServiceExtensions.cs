@@ -53,6 +53,7 @@ namespace MenuManagerTask0001.Extensions
         public static void ConfigureRepositories(this IServiceCollection services)
         {
             services.AddScoped<ILanguageRepository, LanguageRepository>();
+            services.AddScoped<ITermLanguageRepository, TermLanguageRepository>();
         }
 
         public static void ConfigureManagers(this IServiceCollection services)

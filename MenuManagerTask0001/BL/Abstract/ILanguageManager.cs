@@ -8,5 +8,7 @@ namespace BL.Abstract
     public interface ILanguageManager
     {
         IEnumerable<Language> GetAllLanguages();
+        Language GetLanguage(String languageCode);
+        IEnumerable<TermLanguage> GetTerms(String languageCode);
     }
 }

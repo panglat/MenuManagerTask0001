@@ -37,26 +37,51 @@ namespace MenuManagerTask0001.Controllers
                 return StatusCode(500, "Internal server error");
             }
         }
-        /*
-        // GET: api/Languages/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetLanguage([FromRoute] int id)
+
+        // GET: api/Languages/en
+        [HttpGet("{codeLanguage}")]
+        public IActionResult GetLanguage([FromRoute] string codeLanguage)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if(codeLanguage != null && codeLanguage.Length > 0) { 
+                    var language = _languageManager.GetLanguage(codeLanguage);
+                    if(language != null)
+                    {
+                        return Ok(language);
+                    }
+                }
+                return Ok(new List<Language>());
             }
-
-            var language = await _context.Language.SingleOrDefaultAsync(m => m.LanguageId == id);
-
-            if (language == null)
+            catch (Exception)
             {
-                return NotFound();
+                return StatusCode(500, "Internal server error");
             }
-
-            return Ok(language);
         }
 
+        // GET: api/Languages/en
+        [HttpGet("{codeLanguage}/terms")]
+        public IActionResult GetTerms([FromRoute] string codeLanguage)
+        {
+            try
+            {
+                if (codeLanguage != null && codeLanguage.Length > 0)
+                {
+                    var terms = _languageManager.GetTerms(codeLanguage);
+                    if (terms != null)
+                    {
+                        return Ok(terms);
+                    }
+                }
+                return Ok(new List<Term>());
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /*
         // PUT: api/Languages/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutLanguage([FromRoute] int id, [FromBody] Language language)

@@ -10,18 +10,29 @@ namespace BL.Concrete
 {
     public class LanguageManager: ILanguageManager
     {
-        
-        private readonly ILanguageRepository languageRepository;
+        private readonly ILanguageRepository _languageRepository;
+        private readonly ITermLanguageRepository _termLanguageRepository;
 
-        public LanguageManager(ILanguageRepository _languageRepository)
+        public LanguageManager(ILanguageRepository languageRepository, ITermLanguageRepository termLanguageRepository)
         {
-            languageRepository = _languageRepository;
+            _languageRepository = languageRepository;
+            _termLanguageRepository = termLanguageRepository;
         }
         
         public IEnumerable<Language> GetAllLanguages()
         {
-            return languageRepository.FindAll()
+            return _languageRepository.FindAll()
                 .OrderBy(language => language.Name);
+        }
+
+        public Language GetLanguage(String languageCode)
+        {
+            return _languageRepository.FindByCondition(language => languageCode.Equals(language.LanguageCode)).FirstOrDefault();
+        }
+
+        public IEnumerable<TermLanguage> GetTerms(String languageCode)
+        {
+            return _termLanguageRepository.FindByCondition(termLanguage => languageCode.Equals(termLanguage.Language.LanguageCode));
         }
     }
 }
