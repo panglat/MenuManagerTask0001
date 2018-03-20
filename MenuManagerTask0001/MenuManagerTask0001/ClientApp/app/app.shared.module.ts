@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -9,6 +9,12 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { ConfigService } from './services/config.service';
+
+export function ConfigLoader(configService: ConfigService) {
+    // Note: this factory need to return a function (that return a promise)
+    return () => configService.loadLanguageTerms();
+}
 
 @NgModule({
     declarations: [
@@ -29,7 +35,14 @@ import { CounterComponent } from './components/counter/counter.component';
             { path: 'fetch-data', component: FetchDataComponent },
             { path: '**', redirectTo: 'home' }
         ])
-    ]
+    ],
+    providers: [
+        ConfigService, {
+            provide: APP_INITIALIZER,
+            useFactory: ConfigLoader,
+            deps: [ConfigService],
+            multi: true
+        }],
 })
 export class AppModuleShared {
 }

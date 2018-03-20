@@ -22,10 +22,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\models\language.ts" />
+    <None Remove="ClientApp\app\models\LanguageTerms.ts" />
+    <None Remove="ClientApp\app\models\terms.ts" />
+    <None Remove="ClientApp\app\services\config.service.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\LoggerService\LoggerService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\models\language.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\LanguageTerms.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\terms.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\config.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
