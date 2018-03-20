@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Domain.Context;
 using Domain.Models;
+using BL.Abstract;
 
 namespace MenuManagerTask0001.Controllers
 {
@@ -14,20 +15,18 @@ namespace MenuManagerTask0001.Controllers
     [Route("api/languages")]
     public class LanguageController : Controller
     {
-        /*
-        private readonly RepositoryContext _context;
+        private readonly ILanguageManager _languageManager;
 
-        public LanguageController(RepositoryContext context)
+        public LanguageController(ILanguageManager languageManager)
         {
-            _context = context;
+            _languageManager = languageManager;
         }
-        */
+        
         // GET: api/Languages
         [HttpGet]
-        public IEnumerable<String> GetLanguage()
+        public IEnumerable<Language> GetLanguage()
         {
-            //return _context.Language;
-            return new string[] { "panglat1", "panglat2" };
+            return _languageManager.GetAllLanguages();
         }
         /*
         // GET: api/Languages/5

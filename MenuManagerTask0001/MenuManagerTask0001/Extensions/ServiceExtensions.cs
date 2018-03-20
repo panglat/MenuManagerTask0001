@@ -1,4 +1,8 @@
-﻿using Contracts;
+﻿using BL.Abstract;
+using BL.Concrete;
+using Contracts;
+using Domain.Abstract;
+using Domain.Concrete;
 using Domain.Context;
 using LoggerService;
 using Microsoft.AspNetCore.Builder;
@@ -44,6 +48,16 @@ namespace MenuManagerTask0001.Extensions
         {
             services.AddDbContext<RepositoryContext>(options =>
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+        }
+
+        public static void ConfigureRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<ILanguageRepository, LanguageRepository>();
+        }
+
+        public static void ConfigureManagers(this IServiceCollection services)
+        {
+            services.AddScoped<ILanguageManager, LanguageManager>();
         }
     }
 }

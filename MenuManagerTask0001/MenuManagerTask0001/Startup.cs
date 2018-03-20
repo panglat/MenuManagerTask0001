@@ -32,6 +32,8 @@ namespace MenuManagerTask0001
             services.ConfigureIISIntegration();
             services.ConfigureLoggerService();
             services.ConfigureDbContext(Configuration);
+            services.ConfigureRepositories();
+            services.ConfigureManagers();
             services.AddMvc();
         }
 
