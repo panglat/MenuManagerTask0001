@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using BL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +7,8 @@ namespace BL.Abstract
 {
     public interface ILanguageManager
     {
-        IEnumerable<Language> GetAllLanguages();
-        Language GetLanguage(String languageCode);
-        IEnumerable<TermLanguage> GetTerms(String languageCode);
+        IEnumerable<LanguageDto> GetAllLanguages();
+        LanguageDto GetLanguage(String languageCode);
+        TermsDto GetTerms(String languageCode);
     }
 }

@@ -51,7 +51,7 @@ namespace MenuManagerTask0001.Controllers
                         return Ok(language);
                     }
                 }
-                return Ok(new List<Language>());
+                return StatusCode(500, "Internal server error");
             }
             catch (Exception)
             {
@@ -73,7 +73,7 @@ namespace MenuManagerTask0001.Controllers
                         return Ok(terms);
                     }
                 }
-                return Ok(new List<Term>());
+                return StatusCode(500, "Internal server error");
             }
             catch (Exception)
             {

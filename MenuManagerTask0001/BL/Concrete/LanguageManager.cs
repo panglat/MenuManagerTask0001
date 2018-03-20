@@ -1,10 +1,13 @@
 ﻿using BL.Abstract;
+using BL.DTO;
+using BL.Helper;
 using Domain.Abstract;
 using Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace BL.Concrete
 {
@@ -19,20 +22,26 @@ namespace BL.Concrete
             _termLanguageRepository = termLanguageRepository;
         }
         
-        public IEnumerable<Language> GetAllLanguages()
+        public IEnumerable<LanguageDto> GetAllLanguages()
         {
             return _languageRepository.FindAll()
-                .OrderBy(language => language.Name);
+                .OrderBy(language => language.Name)
+                .Select(language => ConverterObjectHelper.LanguageToLanguageDto(language));
         }
 
-        public Language GetLanguage(String languageCode)
+        public LanguageDto GetLanguage(String languageCode)
         {
-            return _languageRepository.FindByCondition(language => languageCode.Equals(language.LanguageCode)).FirstOrDefault();
+            return _languageRepository.FindByCondition(language => languageCode.Equals(language.LanguageCode))
+                .Select(language => ConverterObjectHelper.LanguageToLanguageDto(language))
+                .FirstOrDefault();
         }
 
-        public IEnumerable<TermLanguage> GetTerms(String languageCode)
+        public TermsDto GetTerms(String languageCode)
         {
-            return _termLanguageRepository.FindByCondition(termLanguage => languageCode.Equals(termLanguage.Language.LanguageCode));
+            var termLanguages = _termLanguageRepository.FindByCondition(termLanguage => languageCode.Equals(termLanguage.Language.LanguageCode))
+                .AsQueryable().Include(tl => tl.Language).Include(tl => tl.Term);
+            var termsDto = ConverterObjectHelper.TermLanguagesToTermsDto(termLanguages);
+            return termsDto;
         }
     }
 }
