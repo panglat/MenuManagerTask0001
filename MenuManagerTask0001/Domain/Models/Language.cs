@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public class Locate
+    public class Language
     {
         [Key]
         public int LocateId { get; set; }

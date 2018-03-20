@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Domain.Models
 {
-    public class TermLocate
+    public class TermLanguage
     {
         [Key, ForeignKey("LocateId")]
         public int LocateId { get; set; }
-        public virtual Locate Locate { get; set; }
+        public virtual Language Language { get; set; }
 
         [Key, ForeignKey("TermId")]
         public int TermId { get; set; }

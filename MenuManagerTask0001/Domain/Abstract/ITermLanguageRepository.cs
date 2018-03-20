@@ -6,7 +6,8 @@ using System.Text;
 
 namespace Domain.Abstract
 {
-    public interface ILocateRepository: IRepositoryBase<Locate>
+    public interface ITermLanguageRepository: IRepositoryBase<TermLanguage>
     {
     }
 }
+

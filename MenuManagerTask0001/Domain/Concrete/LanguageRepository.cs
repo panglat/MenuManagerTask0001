@@ -8,9 +8,9 @@ using System.Text;
 
 namespace Domain.Concrete
 {
-    public class LocateRepository : RepositoryBase<Locate>, ILocateRepository
+    public class LanguageRepository : RepositoryBase<Language>, ILanguageRepository
     {
-        public LocateRepository(RepositoryContext repositoryContext)
+        public LanguageRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
         }

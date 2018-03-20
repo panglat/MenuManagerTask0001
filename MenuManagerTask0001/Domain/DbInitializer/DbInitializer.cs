@@ -13,20 +13,20 @@ namespace Domain.DbInitializer
         {
             context.Database.EnsureCreated();
 
-            if(context.Locates.Any())
+            if(context.Language.Any())
             {
                 return; // DB has been seeded
             }
 
-            var locates = new Locate[]
+            var languages = new Language[]
             {
-                new Locate{ Name="English", LanguageCode="en", NativeLanguage="English" },
-                new Locate{ Name="Portuguese", LanguageCode="pt", NativeLanguage="Português" },
+                new Language{ Name="English", LanguageCode="en", NativeLanguage="English" },
+                new Language{ Name="Portuguese", LanguageCode="pt", NativeLanguage="Português" },
             };
 
-            foreach(Locate locate in locates)
+            foreach(Language language in languages)
             {
-                context.Locates.Add(locate);
+                context.Language.Add(language);
             }
 
             context.SaveChanges();
@@ -45,19 +45,19 @@ namespace Domain.DbInitializer
 
             context.SaveChanges();
 
-            var termLocates = new TermLocate[]
+            var termLanguages = new TermLanguage[]
             {
-                new TermLocate{ Locate = locates[0], Term = terms[0], Value = "welcome" },
-                new TermLocate{ Locate = locates[0], Term = terms[1], Value = "name" },
-                new TermLocate{ Locate = locates[0], Term = terms[2], Value = "surname" },
-                new TermLocate{ Locate = locates[1], Term = terms[0], Value = "bem vinda" },
-                new TermLocate{ Locate = locates[1], Term = terms[1], Value = "nome" },
-                new TermLocate{ Locate = locates[1], Term = terms[2], Value = "apelido" },
+                new TermLanguage{ Language = languages[0], Term = terms[0], Value = "welcome" },
+                new TermLanguage{ Language = languages[0], Term = terms[1], Value = "name" },
+                new TermLanguage{ Language = languages[0], Term = terms[2], Value = "surname" },
+                new TermLanguage{ Language = languages[1], Term = terms[0], Value = "bem vinda" },
+                new TermLanguage{ Language = languages[1], Term = terms[1], Value = "nome" },
+                new TermLanguage{ Language = languages[1], Term = terms[2], Value = "apelido" },
             };
 
-            foreach (TermLocate termLocate in termLocates)
+            foreach (TermLanguage termLanguage in termLanguages)
             {
-                context.TermLocates.Add(termLocate);
+                context.TermLanguage.Add(termLanguage);
             }
             context.SaveChanges();
         }
