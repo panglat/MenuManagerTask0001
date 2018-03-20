@@ -8,7 +8,7 @@ namespace Domain.Models
     public class Language
     {
         [Key]
-        public int LocateId { get; set; }
+        public int LanguageId { get; set; }
 
         [Required(ErrorMessage = "Language code is required")]
         [StringLength(2, ErrorMessage = "Language code can't be longer than 2 characters")]

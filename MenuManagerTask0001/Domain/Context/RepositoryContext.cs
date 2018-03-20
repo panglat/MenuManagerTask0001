@@ -17,7 +17,7 @@ namespace Domain.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<TermLanguage>().HasKey(termLocate => new {
-                termLocate.LocateId,
+                termLocate.LanguageId,
                 termLocate.TermId
             });
         }

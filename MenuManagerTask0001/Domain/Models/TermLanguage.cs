@@ -8,8 +8,8 @@ namespace Domain.Models
 {
     public class TermLanguage
     {
-        [Key, ForeignKey("LocateId")]
-        public int LocateId { get; set; }
+        [Key, ForeignKey("LanguageId")]
+        public int LanguageId { get; set; }
         public virtual Language Language { get; set; }
 
         [Key, ForeignKey("TermId")]
