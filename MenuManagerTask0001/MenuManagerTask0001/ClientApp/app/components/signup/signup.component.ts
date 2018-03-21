@@ -12,6 +12,7 @@ import { User } from '../../models';
 export class SignUpComponent implements OnInit, OnDestroy {
     email = '';
     password = '';
+    error = '';
     signUpSubscription: Subscription;
 
     constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
@@ -30,6 +31,13 @@ export class SignUpComponent implements OnInit, OnDestroy {
                 .subscribe((user: User) => {
                     this.localStorageService.email = user.email;
                     this.router.navigate(['home']);
+                }, error => {
+                    console.log(error);
+                    if (error && error.status === 401) {
+                        this.error = "The user already exists";
+                    } else {
+                        this.error = "There was a problem connecting to the server";
+                    }
                 });
         }
     }

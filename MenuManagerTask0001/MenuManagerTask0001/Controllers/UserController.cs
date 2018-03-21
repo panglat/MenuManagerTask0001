@@ -33,7 +33,7 @@ namespace MenuManagerTask0001.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(500, "Internal server error");
+                return NotFound();
             }
 
         }
@@ -43,14 +43,9 @@ namespace MenuManagerTask0001.Controllers
         {
             try
             {
-                if(!ValidateObjectHelper.IsUserDtoValid(userDto))
+                if(!ValidateObjectHelper.IsUserDtoValid(userDto) || !ModelState.IsValid)
                 {
-                    return BadRequest("User object is null");
-                }
-
-                if (!ModelState.IsValid)
-                {
-                    return BadRequest("Invalid model object");
+                    return BadRequest();
                 }
 
                 userDto = _userManager.AddUser(userDto);
@@ -59,11 +54,11 @@ namespace MenuManagerTask0001.Controllers
                     return Ok(userDto);
                 }
 
-                return StatusCode(500, "Internal server error");
+                return Unauthorized();
             }
             catch (Exception)
             {
-                return StatusCode(500, "Internal server error");
+                return Unauthorized();
             }
         }
     }
