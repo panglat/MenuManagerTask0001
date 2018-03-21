@@ -57,7 +57,7 @@ namespace BL.Helper
             return new User()
             {
                 Email = userDto.Email,
-                Password = userDto.Password
+                PasswordNotHashed = userDto.Password
             };
         }
 
