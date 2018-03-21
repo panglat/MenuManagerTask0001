@@ -16,6 +16,7 @@ export class LanguageHolderService {
     }
 
     get terms(): Terms | null {
-        return this._languageTerms ? this._languageTerms.terms : null;
+        const ret = this._languageTerms ? this._languageTerms.terms : null;
+        return ret;
     }
 }

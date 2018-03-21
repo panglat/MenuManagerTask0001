@@ -14,7 +14,6 @@ import { LanguageHolderService } from './services/holders/language.holder.servic
 
 export function ConfigLoader(configService: ConfigService) {
     // Note: this factory need to return a function (that return a promise)
-    console.log("ConfigLoader");
     return () => configService.loadLanguageTerms();
 }
 

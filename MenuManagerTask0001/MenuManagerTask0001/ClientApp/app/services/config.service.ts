@@ -1,25 +1,24 @@
 ﻿import { Injectable, OnDestroy } from '@angular/core';
 import { Http } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
-import { LanguageTerms } from '../models/';
 import 'rxjs/add/operator/map';
+import { LanguageTerms } from '../models/';
 import { LanguageService } from './language.service';
-import { LanguageHolderService } from './holders/language.holder.service';
 
 // Code from: https://aclottan.wordpress.com/tag/angular-cli/
 
 @Injectable()
 export class ConfigService implements OnDestroy {
     // Variable that holds all the fields in appConfig.json
-    private languageTerms: LanguageTerms;
+    languageTerms: LanguageTerms;
 
-    private getLanguageTermsSubscription: Subscription;
+    getAndStoreLanguageTermsSubscription: Subscription;
 
-    constructor(private http: Http, private languageService: LanguageService, private languageHolderService: LanguageHolderService) { }
+    constructor(private http: Http, private languageService: LanguageService) { }
 
     ngOnDestroy(): void {
-        if (this.getLanguageTermsSubscription) {
-            this.getLanguageTermsSubscription.unsubscribe();
+        if (this.getAndStoreLanguageTermsSubscription) {
+            this.getAndStoreLanguageTermsSubscription.unsubscribe();
         }
     }
 
@@ -30,10 +29,8 @@ export class ConfigService implements OnDestroy {
      */
     public loadLanguageTerms(): Promise<LanguageTerms> {
         return new Promise((resolve) => {
-            this.getLanguageTermsSubscription = this.languageService.getLanguageTerms('en')
+            this.getAndStoreLanguageTermsSubscription = this.languageService.getAndStoreLanguageTerms('en')
                 .subscribe((languageTerms: LanguageTerms) => {
-                    this.languageHolderService.languageTerms = languageTerms;
-                    console.log(languageTerms);
                     resolve();
                 });
         });

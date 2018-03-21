@@ -1,1 +1,2 @@
-<h1>{{welcomeMessage}}, {{email}}</h1>
+<h1 *ngIf="welcomeMessage">{{welcomeMessage}}, {{email}}</h1>
+<h1 *ngIf="!welcomeMessage">Loading...</h1>

@@ -9,17 +9,21 @@ import { LocalStorageService } from '../../services/local.storage.service';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    welcomeMessage = '';
+    // welcomeMessage = '';
     email = ''
 
     constructor(private languageHolderService: LanguageHolderService, private localStorageService: LocalStorageService) { }
 
     ngOnInit(): void {
-        if (this.languageHolderService.terms) {
-            this.welcomeMessage = this.languageHolderService.terms.welcome;
-        }
         if (this.localStorageService.email) {
             this.email = this.localStorageService.email;
         }
+    }
+
+    get welcomeMessage(): string | null {
+        if (this.languageHolderService.terms) {
+            return this.languageHolderService.terms.welcome;
+        }
+        return null;
     }
 }
