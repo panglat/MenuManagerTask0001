@@ -7,10 +7,9 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
+import { SignUpComponent } from './components/signup/signup.component';
 import { ConfigService } from './services/config.service';
-import { LanguageService } from './services/';
+import { LanguageService, LocalStorageService, LoginService } from './services/';
 import { LanguageHolderService } from './services/holders/language.holder.service';
 
 export function ConfigLoader(configService: ConfigService) {
@@ -23,8 +22,7 @@ export function ConfigLoader(configService: ConfigService) {
     declarations: [
         AppComponent,
         NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
+        SignUpComponent,
         HomeComponent
     ],
     imports: [
@@ -34,8 +32,7 @@ export function ConfigLoader(configService: ConfigService) {
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
+            { path: 'signup', component: SignUpComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ],
@@ -47,7 +44,9 @@ export function ConfigLoader(configService: ConfigService) {
             multi: true
         },
         LanguageService,
-        LanguageHolderService
+        LanguageHolderService,
+        LocalStorageService,
+        LoginService
     ]
 })
 export class AppModuleShared {
