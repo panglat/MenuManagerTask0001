@@ -27,13 +27,14 @@
     <None Remove="ClientApp\app\models\language.ts" />
     <None Remove="ClientApp\app\models\terms.ts" />
     <None Remove="ClientApp\app\models\user.ts" />
+    <None Remove="ClientApp\app\services\auth.logged.user.guard.service.ts" />
+    <None Remove="ClientApp\app\services\auth.service.ts" />
     <None Remove="ClientApp\app\services\base.service.ts" />
     <None Remove="ClientApp\app\services\config.service.ts" />
     <None Remove="ClientApp\app\services\holders\language.holder.service.ts" />
     <None Remove="ClientApp\app\services\index.ts" />
     <None Remove="ClientApp\app\services\language.service.ts" />
     <None Remove="ClientApp\app\services\local.storage.service.ts" />
-    <None Remove="ClientApp\app\services\login.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,11 +50,12 @@
     <TypeScriptCompile Include="ClientApp\app\models\language.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\language.terms.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\terms.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\auth.logged.user.guard.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\base.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\config.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\holders\language.holder.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\index.ts" />
-    <TypeScriptCompile Include="ClientApp\app\services\login.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\services\auth.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\language.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\local.storage.service.ts" />
   </ItemGroup>

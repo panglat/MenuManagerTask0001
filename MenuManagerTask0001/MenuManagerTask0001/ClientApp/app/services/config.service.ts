@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/map';
 import { LanguageTerms } from '../models/';
 import { LanguageService } from './language.service';
+import { LocalStorageService } from './local.storage.service';
 
 // Code from: https://aclottan.wordpress.com/tag/angular-cli/
 
@@ -14,7 +15,7 @@ export class ConfigService implements OnDestroy {
 
     getAndStoreLanguageTermsSubscription: Subscription;
 
-    constructor(private http: Http, private languageService: LanguageService) { }
+    constructor(private http: Http, private languageService: LanguageService, private localStorageService: LocalStorageService) { }
 
     ngOnDestroy(): void {
         if (this.getAndStoreLanguageTermsSubscription) {

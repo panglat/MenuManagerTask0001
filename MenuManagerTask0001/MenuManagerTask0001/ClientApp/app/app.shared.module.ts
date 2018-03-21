@@ -9,7 +9,7 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignUpComponent } from './components/signup/signup.component';
 import { ConfigService } from './services/config.service';
-import { LanguageService, LocalStorageService, LoginService } from './services/';
+import { LanguageService, AuthService, AuthLoggedUserGuardService, LocalStorageService } from './services/';
 import { LanguageHolderService } from './services/holders/language.holder.service';
 
 export function ConfigLoader(configService: ConfigService) {
@@ -30,7 +30,7 @@ export function ConfigLoader(configService: ConfigService) {
         FormsModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
+            { path: 'home', component: HomeComponent, canActivate: [AuthLoggedUserGuardService]},
             { path: 'signup', component: SignUpComponent },
             { path: '**', redirectTo: 'home' }
         ])
@@ -44,8 +44,9 @@ export function ConfigLoader(configService: ConfigService) {
         },
         LanguageService,
         LanguageHolderService,
-        LocalStorageService,
-        LoginService
+        AuthService,
+        AuthLoggedUserGuardService,
+        LocalStorageService
     ]
 })
 export class AppModuleShared {

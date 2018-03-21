@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { LocalStorageService, LoginService } from '../../services';
+import { LocalStorageService, AuthService } from '../../services';
 import { User } from '../../models';
 
 @Component({
@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
     password = '';
     signUpSubscription: Subscription;
 
-    constructor(private router: Router, private localStorageService: LocalStorageService, private loginService: LoginService) { }
+    constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
 
     ngOnInit(): void {
         this.localStorageService.email = null;
@@ -26,7 +26,7 @@ export class SignUpComponent implements OnInit, OnDestroy {
 
     signupButtonClicked() {
         if (this.email.length > 0 && this.password.length > 0) {
-            this.signUpSubscription = this.loginService.signUp(this.email, this.password)
+            this.signUpSubscription = this.authService.signUp(this.email, this.password)
                 .subscribe((user: User) => {
                     this.localStorageService.email = user.email;
                     this.router.navigate(['home']);
