@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { LocalStorageService, AuthService } from '../../services';
 import { User } from '../../models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'signup',
@@ -12,10 +13,10 @@ import { User } from '../../models';
 export class SignUpComponent implements OnInit, OnDestroy {
     email = '';
     password = '';
-    error = 'Error de prueba';
+    error = '';
     signUpSubscription: Subscription;
 
-    constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
+    constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService, private translate: TranslateService) { }
 
     ngOnInit(): void {
         this.localStorageService.email = null;
@@ -34,9 +35,9 @@ export class SignUpComponent implements OnInit, OnDestroy {
                 }, error => {
                     console.log(error);
                     if (error && error.status === 401) {
-                        this.error = "The user already exists";
+                        this.error = "E_USER_EXISTS";
                     } else {
-                        this.error = "There was a problem connecting to the server";
+                        this.error = "E_CON_ERROR";
                     }
                 });
         }

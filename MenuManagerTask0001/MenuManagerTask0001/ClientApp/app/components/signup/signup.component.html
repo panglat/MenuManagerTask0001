@@ -17,7 +17,8 @@
             </div>
         </div>
         <div class="row text-center">
-            <label class="error-label">{{error}}</label>
+            <label *ngIf="error === 'E_USER_EXISTS'" class="error-label" [innerHtml]="'E_USER_EXISTS' | translate"></label>
+            <label *ngIf="error === 'E_CON_ERROR'" class="error-label" [innerHtml]="'E_CON_ERROR' | translate"></label>
         </div>
         <div class="row text-center">
             <button type="submit" class="btn btn-primary btn-block" [disabled]="!(email && password)" (click)="signupButtonClicked()">{{ 'SIGNUP' | translate:param }}</button>

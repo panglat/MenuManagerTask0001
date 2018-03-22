@@ -11,8 +11,7 @@ import { SignUpComponent } from './components/signup/signup.component';
 import { ConfigService } from './services/config.service';
 import { LanguageService, AuthService, AuthLoggedUserGuardService, LocalStorageService } from './services/';
 import { LanguageHolderService } from './services/holders/language.holder.service';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 
 export function ConfigLoader(configService: ConfigService) {
     // Note: this factory need to return a function (that return a promise)

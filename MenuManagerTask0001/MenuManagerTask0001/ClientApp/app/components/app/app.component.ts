@@ -18,13 +18,17 @@ export class AppComponent {
         translate.setTranslation('en', {
             EMAIL: 'Email',
             PASSWORD: 'Password',
-            SIGNUP: 'Sign up'
+            SIGNUP: 'Sign up', 
+            E_USER_EXISTS: 'The user already exists',
+            E_CON_ERROR: 'There was a problem connecting to the server'
         });
 
         translate.setTranslation('pt', {
             EMAIL: 'O email',
             PASSWORD: 'Senha',
-            SIGNUP: 'Inscrever-se'
+            SIGNUP: 'Inscrever-se',
+            E_USER_EXISTS: 'O usu&aacute;rio j&aacute; existe',
+            E_CON_ERROR: 'Houve um problema ao se conectar ao servidor'
         });
     }
 }
