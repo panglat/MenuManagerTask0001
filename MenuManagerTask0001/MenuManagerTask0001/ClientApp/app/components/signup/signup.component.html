@@ -16,7 +16,7 @@
                 <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" [placeholder]="'PASSWORD' | translate" (keyup)="error = ''" (keyup.enter)="signupButtonClicked()" required>
             </div>
         </div>
-        <div class="row text-center">
+        <div class="row text-center error-row">
             <label *ngIf="error === 'E_USER_EXISTS'" class="error-label" [innerHtml]="'E_USER_EXISTS' | translate"></label>
             <label *ngIf="error === 'E_CON_ERROR'" class="error-label" [innerHtml]="'E_CON_ERROR' | translate"></label>
         </div>

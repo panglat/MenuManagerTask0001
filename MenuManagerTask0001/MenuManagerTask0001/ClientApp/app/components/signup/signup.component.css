@@ -12,6 +12,10 @@ input {
     margin: 20px;
 }
 
+.error-row {
+    height: 75px;
+}
+
 .btn-primary {
     height: 40px;
     width: 250px;
