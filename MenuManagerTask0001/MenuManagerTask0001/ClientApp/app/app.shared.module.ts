@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './components/app/app.component';
@@ -11,6 +11,8 @@ import { SignUpComponent } from './components/signup/signup.component';
 import { ConfigService } from './services/config.service';
 import { LanguageService, AuthService, AuthLoggedUserGuardService, LocalStorageService } from './services/';
 import { LanguageHolderService } from './services/holders/language.holder.service';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function ConfigLoader(configService: ConfigService) {
     // Note: this factory need to return a function (that return a promise)
@@ -33,7 +35,8 @@ export function ConfigLoader(configService: ConfigService) {
             { path: 'home', component: HomeComponent, canActivate: [AuthLoggedUserGuardService]},
             { path: 'signup', component: SignUpComponent },
             { path: '**', redirectTo: 'home' }
-        ])
+        ]),
+        TranslateModule.forRoot()
     ],
     providers: [
         ConfigService, {
@@ -47,6 +50,9 @@ export function ConfigLoader(configService: ConfigService) {
         AuthService,
         AuthLoggedUserGuardService,
         LocalStorageService
+    ],
+    exports: [
+        TranslateModule
     ]
 })
 export class AppModuleShared {

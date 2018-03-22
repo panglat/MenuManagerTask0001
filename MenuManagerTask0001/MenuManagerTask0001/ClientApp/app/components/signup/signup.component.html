@@ -1,14 +1,14 @@
 <div>
     <form>
         <div class="form-group">
-            <label for="email">Email:</label>
+            <label for="email">{{ 'EMAIL' | translate:param }}:</label>
             <input type="text" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="Email name" (keyup)="error = ''">
         </div>
         <div class="form-group">
-            <label for="password">Password:</label>
+            <label for="password">{{ 'PASSWORD' | translate:param }}:</label>
             <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Password" (keyup)="error = ''" (keyup.enter)="signupButtonClicked()">
         </div>
         <label>{{error}}</label>
-        <button type="button" class="btn btn-secondary btn-block" [disabled]="email.length === 0 || password.lenght === 0" (click)="signupButtonClicked()">Signup</button>
+        <button type="button" class="btn btn-secondary btn-block" [disabled]="email.length === 0 || password.lenght === 0" (click)="signupButtonClicked()">{{ 'SIGNUP' | translate:param }}</button>
     </form>
 </div>

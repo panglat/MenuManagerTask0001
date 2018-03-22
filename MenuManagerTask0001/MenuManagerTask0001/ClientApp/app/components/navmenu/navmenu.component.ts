@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LanguageService } from '../../services';
 import { Subscription } from 'rxjs/Subscription';
 import { Language } from '../../models';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'nav-menu',
@@ -16,7 +17,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     getLanguageListSubscription: Subscription;
     getAndStoreLanguageTermsSubscription: Subscription;
 
-    constructor(private languageService: LanguageService) { }
+    constructor(private languageService: LanguageService, private translate: TranslateService) { }
 
     ngOnInit(): void {
         this.getLanguageListSubscription = this.languageService.getLanguageList()
@@ -38,6 +39,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
         this.selectedLanguage = language;
         this.dropdownTitle = language.name;
         this.getAndStoreLanguageTermsSubscription = this.languageService.getAndStoreLanguageTerms(language.languageCode).subscribe();
+        this.translate.use(language.languageCode);
     }
 
 }
