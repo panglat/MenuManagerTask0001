@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Terms } from '../../models';
 import { LanguageHolderService } from '../../services/holders/language.holder.service';
 import { LocalStorageService } from '../../services/local.storage.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
     // welcomeMessage = '';
     email = ''
 
-    constructor(private languageHolderService: LanguageHolderService, private localStorageService: LocalStorageService) { }
+    constructor(private languageHolderService: LanguageHolderService, private localStorageService: LocalStorageService, private router: Router) { }
 
     ngOnInit(): void {
         if (this.localStorageService.email) {
@@ -25,5 +26,9 @@ export class HomeComponent implements OnInit {
             return this.languageHolderService.terms.welcome;
         }
         return null;
+    }
+
+    backToSignUpPage() {
+        this.router.navigate(['signup']);
     }
 }

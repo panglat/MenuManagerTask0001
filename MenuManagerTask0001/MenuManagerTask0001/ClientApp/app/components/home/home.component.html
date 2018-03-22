@@ -1,2 +1,5 @@
-<h1 *ngIf="welcomeMessage">{{welcomeMessage}}, {{email}}</h1>
-<h1 *ngIf="!welcomeMessage">Loading...</h1>
+<section>
+    <h1 *ngIf="welcomeMessage">{{welcomeMessage}}, {{email}}</h1>
+    <p *ngIf="!welcomeMessage">Loading...</p>
+    <p><a (click)="backToSignUpPage()"> Back to Sign Up </a></p>
+</section>

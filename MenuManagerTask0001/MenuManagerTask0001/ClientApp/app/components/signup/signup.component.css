@@ -1,0 +1,21 @@
+label {
+    font-size: 14pt;
+    padding-top: 5px;
+}
+
+input {
+    font-size: 14pt;
+}
+
+.error-label {
+    color: red;
+    margin: 20px;
+}
+
+.btn-primary {
+    height: 40px;
+    width: 250px;
+    position: relative;
+    left: calc(50% - 125px);
+    font-size: 14pt;
+}

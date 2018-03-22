@@ -12,7 +12,7 @@ import { User } from '../../models';
 export class SignUpComponent implements OnInit, OnDestroy {
     email = '';
     password = '';
-    error = '';
+    error = 'Error de prueba';
     signUpSubscription: Subscription;
 
     constructor(private router: Router, private authService: AuthService, private localStorageService: LocalStorageService) { }
